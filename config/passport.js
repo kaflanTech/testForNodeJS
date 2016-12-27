@@ -1,5 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('./user');
+var User = require('./models/user.model');
 module.exports = function (passport) {
   passport.serializeUser(function (user, done) {
     done(null, user.id);
@@ -38,7 +38,9 @@ module.exports = function (passport) {
             throw err;
           return done(null, newUser);
         });
-      });
+      }
+    });
+
   }));
 
 
