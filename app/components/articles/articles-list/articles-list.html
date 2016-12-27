@@ -1,0 +1,8 @@
+<ul class="articles-list">
+  <li class="articles-list__article" ng-repeat="article in $ctrl.articles">
+    <a ui-sref="article({id: article.id})" class="articles-list__article-link">
+      <h1 class="articles-list__article-title">{{article.title}}</h1>
+      <p class="articles-list__article-extract">{{article.extract}}</p>
+    </a>
+  </li>
+</ul>

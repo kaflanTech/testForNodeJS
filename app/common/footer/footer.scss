@@ -1,0 +1,15 @@
+// footer styles
+@import './app/variables';
+
+.footer {
+  flex-grow: 0;
+  padding: 1rem 2rem;
+  color: $white-gray-color;
+  background: $dark-gray-color;
+  &__text {
+    font-size: .8rem;
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+}

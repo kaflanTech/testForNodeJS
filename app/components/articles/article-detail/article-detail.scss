@@ -1,0 +1,35 @@
+@import './app/variables';
+
+.article-detail {
+  text-align: center;
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: $dark-gray-color
+  }
+  &__extract {
+    font-size: 1.5rem;
+    color: $light-gray-color;
+    margin-bottom: 1.5rem;
+  }
+  &__separator {
+    width: 100px;
+    margin: 0 auto 1.5rem;
+    height: 3px;
+    background: $white-gray-color;
+    border: none;
+    border-radius: 5px;
+  }
+  &__content {
+    text-align: justify;
+    width: 920px;
+    max-width: 90%;
+    margin: 0 auto 1.5rem;
+    font-size: 1.2rem;
+    color: $dark-gray-color;
+    line-height: 1.6;
+  }
+}
+.action-buttons {
+  text-align: center;
+}

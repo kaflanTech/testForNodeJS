@@ -1,0 +1,82 @@
+// global styles
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import './variables.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body {
+  background: $white;
+  font-family: 'Lato', sans-serif;
+}
+.container {
+  width: 1200px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  &__content {
+    flex-grow: 1;
+  }
+}
+
+.articles-list-wrapper {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1rem;
+  border-radius: 30px;
+  background: $accent-color;
+  box-shadow: 0 5px 5px transparentize($accent-color, .6);
+  padding: .9rem 1.7rem;
+  text-transform: uppercase;
+  color: $white;
+  border: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: 1rem .5rem;
+  &--edit {
+    background: #f1c40f;
+    box-shadow: 0 5px 5px transparentize(#f1c40f, .6);
+  }
+  &--delete {
+    background: $red;
+    box-shadow: 0 5px 5px transparentize($red, .6);
+  }
+}
+
+[ui-view] {
+  &.ng-enter, &.ng-leave {
+    position: absolute;
+    right: 0;
+    left: 0;
+    transition: .2s ease-in-out;
+  }
+  &.ng-enter {
+    opacity: 0;
+    transform: scale(0);
+  }
+  &.ng-enter-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  &.ng-leave {
+    opacity: 1;
+    transform: scale(1);
+  }
+  &.ng-leave-active {
+    opacity: 0;
+    transform: scale(0);
+  }
+}

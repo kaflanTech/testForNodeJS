@@ -1,0 +1,26 @@
+@import './app/variables';
+
+.home {
+  text-align: center;
+  &__title {
+    font-size: 2.5rem;
+    color: $dark-gray-color;
+    margin-bottom: 1.5rem;
+  }
+  &__subtitle {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: $dark-gray-color;
+    margin-bottom: 1.5rem;
+  }
+  &__img-wrapper {
+    position: relative;
+    width: 15rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  &__img {
+    max-width: 100%;
+    display: block;
+  }
+}

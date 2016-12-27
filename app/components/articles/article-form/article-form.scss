@@ -1,0 +1,51 @@
+@import './app/variables';
+@import './app/app.scss';
+
+.article-form {
+  display: block;
+  margin: 0 auto;
+  width: 700px;
+  max-width: 90%;
+  text-align: center;
+  &__label {
+    text-transform: uppercase;
+    font-size: .9rem;
+    color: $light-gray-color;
+    text-align: left;
+    margin-bottom: .3rem;
+    letter-spacing: 1px;
+  }
+  &__input {
+    background: $white-gray-color;
+    margin-bottom: 1.5rem;
+    display: block;
+    width: 100%;
+    padding: .6rem 1rem;
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: .2s ease-in;
+    outline: none;
+    font-size: 1.3rem;
+    color: $light-gray-color;
+    &:focus {
+      border-bottom: 2px solid $accent-color;
+    }
+  }
+  &__textarea {
+    @extend .article-form__input;
+    resize: vertical;
+    min-height: 200px;
+  }
+  &__btn {
+    @extend .btn;
+    margin: 0 1rem;
+    &--submit {
+      background: $green;
+      box-shadow: 0 5px 5px transparentize($green, .6);
+    }
+    &--cancel {
+      box-shadow: 0 5px 5px transparentize($red, .6);
+      background: $red;
+    }
+  }
+}

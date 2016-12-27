@@ -1,0 +1,48 @@
+@import './app/variables';
+
+.articles-list {
+  display: block;
+  list-style: none;
+  text-align: center;
+  padding: 1rem 0;
+  &__article {
+    transition: .2s all ease;
+    position: relative;
+    background: white;
+    margin-bottom: 2rem;
+    padding: .8rem 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    color: $dark-gray-color;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      margin-left: -1px;
+      top: calc(100% + .8rem);
+      width: .5rem;
+      height: .5rem;
+      background: $accent-color;
+      border-radius: 50%;
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+      &:after {
+        display: none;
+      }
+    }
+    &:hover {
+      color: $accent-color;
+    }
+    &-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    &-title {
+      margin-bottom: .5rem;
+    }
+    &-extract {
+
+    }
+  }
+}

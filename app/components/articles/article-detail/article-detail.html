@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="article-detail-wrapper" ng-hide="$ctrl.isEditing">
+    <div class="article-detail">
+      <h1 class="article-detail__title">{{$ctrl.article.title}}</h1>
+      <p class="article-detail__extract">{{$ctrl.article.extract}}</p>
+      <hr class="article-detail__separator"></hr>
+      <p class="article-detail__content">{{$ctrl.article.content}}</p>
+    </div>
+    <div class="action-buttons">
+      <button class="btn btn--edit" ng-click="$ctrl.isEditing = true">Edit</button>
+      <button class="btn btn--delete" ng-click="$ctrl.deleteArticle()">Delete</button>
+    </div>
+  </div>
+  <div class="edit-article-form-wrapper" ng-show="$ctrl.isEditing">
+    <article-form article="$ctrl.article" action-type="update" on-edit-article="$ctrl.editArticle($event)" on-cancel-form="$ctrl.cancelForm()"></article-form>
+  </div>
+</div>

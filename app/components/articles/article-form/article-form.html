@@ -1,0 +1,10 @@
+<form class="article-form" ng-submit="$ctrl.onSubmit()">
+  <p class="article-form__label"> Title: </p>
+  <input type="text" class="article-form__input" name="title" ng-model="$ctrl.article.title"/>
+  <p class="article-form__label"> Extract: </p>
+  <input type="text" class="article-form__input" name="extract" ng-model="$ctrl.article.extract"/>
+  <p class="article-form__label"> Content: </p>
+  <textarea class="article-form__textarea" name="content" ng-model="$ctrl.article.content"></textarea>
+  <button class="article-form__btn article-form__btn--cancel" ng-click="$ctrl.onCancelForm()">Cancel</button>
+  <button type="submit" class="article-form__btn article-form__btn--submit">{{$ctrl.actionType}}</button>
+</form>

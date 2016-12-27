@@ -1,0 +1,11 @@
+<div class="articles">
+  <div class="container">
+    <div class="articles-list-wrapper" ng-hide="$ctrl.showForm">
+      <button class="btn" ng-click="$ctrl.showForm = true">New Article</button>
+      <articles-list articles="$ctrl.articles"></articles-list>
+    </div>
+    <div class="article-form-wrapper" ng-show="$ctrl.showForm">
+      <article-form action-type="create" article="$ctrl.newArticle" on-add-article="$ctrl.addArticle($event)" on-cancel-form="$ctrl.cancelForm()"></article-form>
+    </div>
+  </div>
+</div>

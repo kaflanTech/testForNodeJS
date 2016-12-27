@@ -1,0 +1,29 @@
+.articles-list-wrapper {
+  &.ng-hide {
+    opacity: 0;
+    transform: scale(0);
+  }
+  &.ng-hide-add, &.ng-hide-remove {
+    transition: all .2s ease-in-out;
+    position: absolute;
+    width: 1200px;
+    max-width: 90%;
+    margin: 0 auto;
+    right: 0; left: 0;
+  }
+}
+
+.article-form-wrapper {
+  &.ng-hide {
+    opacity: 0;
+    transform: scale(0);
+  }
+  &.ng-hide-add, &.ng-hide-remove {
+    transition: all .2s ease-in-out;
+    position: absolute;
+    width: 1200px;
+    max-width: 90%;
+    margin: 0 auto;
+    right: 0; left: 0;
+  }
+}

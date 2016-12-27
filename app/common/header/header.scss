@@ -1,0 +1,15 @@
+// header styles
+@import './app/variables';
+
+.header {
+  flex-grow: 0;
+  color: $white;
+  background: $dark-gray-color;
+  padding: 1.5rem 1.5rem;
+  &__title {
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
