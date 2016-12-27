@@ -33,8 +33,8 @@ module.exports = function (app) {
       i = 1;
     }
     new Articles({
-      id: i++,
-      title: req.body.tittle,
+      id: ++i,
+      title: req.body.title,
       extract: req.body.extract,
       content: req.body.content
     }).save(
@@ -51,7 +51,7 @@ module.exports = function (app) {
     Articles.update({ id: req.params.id },
       {
         $set: {
-          title: req.body.tittle,
+          title: req.body.title,
           extract: req.body.extract,
           content: req.body.content
         }

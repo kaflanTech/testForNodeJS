@@ -14,6 +14,7 @@ export class ArticlesController {
   }
   $onChanges(changes) {
     if (changes.articles) {
+      console.log('changed,', this.articles);
       this.articles = angular.copy(this.articles);
     }
   }
