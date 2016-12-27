@@ -25,7 +25,7 @@ const config = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'client'),
-    publicPath: '/'
+    publicPath: ''
   },
   module: {
     loaders: loaders
@@ -33,6 +33,7 @@ const config = {
   debug: true,
   devTool: 'source-map',
   devServer: {
+    contentBase: './client',
     hot: true,
     inline: true
   },

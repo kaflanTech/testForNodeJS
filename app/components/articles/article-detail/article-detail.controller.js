@@ -1,6 +1,7 @@
 export class ArticleDetailController {
-  constructor(ArticlesService, $state) {
+  constructor(ArticlesService, $state, $window) {
     'ngInject';
+    this.$window = $window;
     this.$state = $state;
     this.ArticlesService = ArticlesService;
   }
@@ -17,9 +18,8 @@ export class ArticleDetailController {
     this.originalArticle = angular.copy(this.article);
   }
   deleteArticle() {
-    let confirm = prompt('Are you sure you want to delete this article? yes/no');
-    confirm = confirm.toLowerCase();
-    if (confirm === 'yes' || confirm === 'y') {
+    let confirm = this.$window.confirm('Are you sure you want to delete this article?');
+    if (confirm) {
       this.ArticlesService.deleteArticle(this.article);
       this.$state.go('articles');
     }
