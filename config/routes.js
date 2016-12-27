@@ -2,18 +2,9 @@ var mongoose = require('mongoose');
 var Articles = mongoose.model('Articles');
 var i;
 Articles.find({}, function (err, articles) {
-     let arr = articles;
-     let finallArr = [];
-     for(let j = 0 ; j < arr.length; j++){
-       if(arr[j].id){
-         finallArr.push(arr[j].id);
-       }
-     }
-     i = finallArr.reduce(function(a,b){
-       return Math.max(a,b)
-     });
-     console.log(finallArr, i);
-});  
+    i = articles.map(x => x.id).sort((a, b) => a - b).pop();
+    console.log(i);
+});
 module.exports = function (app) {
 
   app.get('/articles', function (req, res) {
@@ -21,7 +12,7 @@ module.exports = function (app) {
       if (err) {
         res.send(err);
       }
-      console.log(articles);
+      //console.log(articles);
       res.send(articles);
     });
   });
