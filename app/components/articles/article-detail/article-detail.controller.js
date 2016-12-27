@@ -14,20 +14,23 @@ export class ArticleDetailController {
     }
   }
   getArticle() {
-    this.article = this.ArticlesService.getArticle(this.article.id);
+    this.article = this.ArticlesService.getArticle(this.article.id)
     this.originalArticle = angular.copy(this.article);
   }
   deleteArticle() {
     let confirm = this.$window.confirm('Are you sure you want to delete this article?');
     if (confirm) {
-      this.ArticlesService.deleteArticle(this.article);
-      this.$state.go('articles');
+      this.ArticlesService.deleteArticle(this.article)
+        .then(res => {
+          this.$state.go('articles');
+        });
     }
   }
   editArticle({updatedArticle}) {
-    this.ArticlesService.updateArticle(updatedArticle);
-    this.getArticle();
-    this.isEditing = false;
+    this.ArticlesService.updateArticle(updatedArticle).then(res => {
+      this.getArticle();
+      this.isEditing = false;
+    });
   }
   cancelForm() {
     this.isEditing = false;

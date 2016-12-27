@@ -64,9 +64,10 @@ module.exports = function (app) {
       })
   });
   app.delete('/articles/:id', function (req, res) {
-    Articles.findByIdAndRemove(req.params.id, function (err, articles) {
+    Articles.remove({id:req.params.id}, function (err, articles) {
+      if(err) throw err;
       res.send('ok, delete work');
-    });
+      });
   });
 
 

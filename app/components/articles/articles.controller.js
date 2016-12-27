@@ -19,13 +19,15 @@ export class ArticlesController {
     }
   }
   getArticles() {
-    this.articles = this.ArticlesService.getArticles();
+    this.ArticlesService.getArticles().then(res => this.articles = res);
   }
   addArticle({newArticle}) {
     newArticle.id = this.articles[this.articles.length-1].id+1;
-    this.ArticlesService.addArticle(newArticle);
-    this.getArticles();
-    this.cancelForm();
+    this.ArticlesService.addArticle(newArticle)
+      .then(res => {
+        this.getArticles();
+        this.cancelForm();
+      });
   }
   cancelForm() {
     this.showForm = false;
