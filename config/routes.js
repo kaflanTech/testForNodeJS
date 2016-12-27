@@ -3,9 +3,6 @@ var Articles = mongoose.model('Articles');
 var i = 10;
 
 module.exports = function (app) {
-  app.get('/', function (req, res) {
-    console.log('data');
-  });
 
   app.get('/articles', function (req, res) {
     Articles.find({}, function (err, articles) {
@@ -29,9 +26,9 @@ module.exports = function (app) {
 
 
   app.post('/articles/new', function (req, res) {
-    new Articles.create({
-       id: i++ , 
-       title:req.body.tittle,
+    new Articles({
+       id: i++,
+       title: req.body.tittle,
        extract: req.body.extract,
        content: req.body.content
     }).save(
@@ -41,7 +38,6 @@ module.exports = function (app) {
       }
       res.send(article);
     });
-    i++;
     console.log(i);
   });
 
