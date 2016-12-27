@@ -1,7 +1,19 @@
 var mongoose = require('mongoose');
 var Articles = mongoose.model('Articles');
-var i = 10;
-
+var i;
+Articles.find({}, function (err, articles) {
+     let arr = articles;
+     let finallArr = [];
+     for(let j = 0 ; j < arr.length; j++){
+       if(arr[j].id){
+         finallArr.push(arr[j].id);
+       }
+     }
+     i = finallArr.reduce(function(a,b){
+       return Math.max(a,b)
+     });
+     console.log(finallArr, i);
+});  
 module.exports = function (app) {
 
   app.get('/articles', function (req, res) {
@@ -26,44 +38,44 @@ module.exports = function (app) {
 
 
   app.post('/articles/new', function (req, res) {
+    if (typeof i === "undefined"){
+      i = 1;
+    }
     new Articles({
-       id: i++,
-       title: req.body.tittle,
-       extract: req.body.extract,
-       content: req.body.content
+      id: i++,
+      title: req.body.tittle,
+      extract: req.body.extract,
+      content: req.body.content
     }).save(
-     function (err, article) {
-      if (err) {
-        res.send(err);
-      }
-      res.send(article);
-    });
-    console.log(i);
+      function (err, article) {
+        if (err) {
+          res.send(err);
+        }
+        res.send(article);
+      });
   });
 
   app.put('/articles/:id', function (req, res) {
+    console.log(req.params.id, req.body);
     Articles.update({ id: req.params.id },
-     {
-       $set:{
-         title:req.body.tittle,
-       extract: req.body.extract,
-       content: req.body.content
-       }
-    },
-     function (err, article) {
-      if (err) {
-        res.send(err);
-      }
-      res.send({article: article, ok: 'ok'});
-    })
+      {
+        $set: {
+          title: req.body.tittle,
+          extract: req.body.extract,
+          content: req.body.content
+        }
+      },
+      function (err, article) {
+        if (err) {
+          res.send(err);
+        }
+        res.send({ article: article, ok: 'ok' });
+      })
   });
   app.delete('/articles/:id', function (req, res) {
-       Articles.findById( req.params.id,function (err, articles){
-         articles.remove( function (err, articles){
-           if( err ) return next( err );
-           res.send('ok, delete work');
-         });
-       });
+    Articles.findByIdAndRemove(req.params.id, function (err, articles) {
+      res.send('ok, delete work');
+    });
   });
 
 
