@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Articles = mongoose.model('Articles');
-var i;
+const mongoose = require('mongoose');
+const Articles = mongoose.model('Articles');
+let i;
 
-Articles.find({}, function (err, articles) {
+Articles.find({}, (err, articles) => {
   i = articles.map(x => x.id).sort((a, b) => a - b).pop();
 });
 function Response(err, data, res) {
@@ -10,7 +10,7 @@ function Response(err, data, res) {
   res.send({ status: "ok", article: data });
 }
 
-exports.create = function (req, res) {
+exports.create = (req, res) => {
   if (typeof i === "undefined") {
     i = 1;
   }
@@ -19,10 +19,10 @@ exports.create = function (req, res) {
     title: req.body.title,
     extract: req.body.extract,
     content: req.body.content
-  }).save(function(err, articles){Response(err, articles, res)});
+  }).save( (err, articles) => { Response(err, articles, res) });
 };
 
-exports.update = function (req, res) {
+exports.update = (req, res) => {
   Articles.update({ id: req.params.id },
     {
       $set: {
@@ -31,19 +31,19 @@ exports.update = function (req, res) {
         content: req.body.content
       }
     },
-    function(err, articles){Response(err, articles, res)});
+    (err, articles) => { Response(err, articles, res) });
 };
-exports.remove = function(req, res){
-  Articles.remove({ id: req.params.id }, function(err, articles){Response(err, articles, res)});
+exports.remove = (req, res) => {
+  Articles.remove({ id: req.params.id },  (err, articles) => { Response(err, articles, res) });
 };
 
-exports.getAllArticles = function (req, res) {
-  
-  Articles.find({}, function(err, articles){
+exports.getAllArticles = (req, res) => {
+
+  Articles.find({}, (err, articles) => {
     Response(err, articles, res);
-  } );
+  });
 };
 
-exports.getArticleId = function (req, res) {
-  Articles.find({ id: req.params.id }, function(err, articles){Response(err, articles, res)});
+exports.getArticleId = (req, res) => {
+  Articles.find({ id: req.params.id }, (err, articles) => { Response(err, articles, res) });
 };
