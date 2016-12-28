@@ -1,5 +1,5 @@
-const controller = require('./controllers/articles.controller');
-
+const controllerFun = require('./controllers/articles.controller');
+const controller = controllerFun();
 module.exports = function (app) {
 
   app.get('/articles', controller.getAllArticles);
