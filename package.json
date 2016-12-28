@@ -25,7 +25,6 @@
     "node-sass": "^3.11.1",
     "raw-loader": "^0.5.1",
     "sass-loader": "^4.0.2",
-    "serve-favicon": "^2.3.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
@@ -35,12 +34,9 @@
     "angular-animate": "^1.5.8",
     "angular-ui-router": "^1.0.0-beta.3",
     "bcrypt-nodejs": "latest",
-    "connect-flash": "^0.1.1",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
-    "mongodb": "^2.2.16",
-    "mongoose": "^4.7.5",
-    "morgan": "^1.7.0"
+    "mongoose": "^4.7.5"
   },
   "author": "sannacode.dev",
   "license": "ISC"

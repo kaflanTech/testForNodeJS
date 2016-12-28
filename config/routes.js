@@ -1,80 +1,28 @@
 var mongoose = require('mongoose');
 var Articles = mongoose.model('Articles');
-var i;
-Articles.find({}, function (err, articles) {
-    i = articles.map(x => x.id).sort((a, b) => a - b).pop();
-    console.log(i);
-});
+var controller = require('./controllers/articles.controller');
+
 module.exports = function (app) {
 
   app.get('/articles', function (req, res) {
-    Articles.find({}, function (err, articles) {
-      if (err) {
-        res.send(err);
-      }
-      res.send(articles);
-    });
+      controller.getAllArticles(req, res);
   });
 
   app.get('/articles/:id', function (req, res) {
-    Articles.find({ id: req.params.id }, function (err, article) {
-      if (err) {
-        res.send(err);
-      }
-      res.send(article);
-    })
-
+    controller.getArticleId(req,res);
   });
 
 
   app.post('/articles/new', function (req, res) {
-    if (typeof i === "undefined"){
-      i = 1;
-    }
-    new Articles({
-      id: ++i,
-      title: req.body.title,
-      extract: req.body.extract,
-      content: req.body.content
-    }).save(
-      function (err, article) {
-        if (err) {
-          res.send(err);
-        }
-        res.send(article);
-      });
+    controller.create(req,res);
   });
 
   app.put('/articles/:id', function (req, res) {
-    console.log(req.params.id, req.body);
-    Articles.update({ id: req.params.id },
-      {
-        $set: {
-          title: req.body.title,
-          extract: req.body.extract,
-          content: req.body.content
-        }
-      },
-      function (err, article) {
-        if (err) {
-          res.send(err);
-        }
-        res.send({ article: article, ok: 'ok' });
-      })
+    controller.update(req,res);
   });
   app.delete('/articles/:id', function (req, res) {
-    Articles.remove({id:req.params.id}, function (err, articles) {
-      if(err) throw err;
-      res.send('ok, delete work');
-      });
+    controller.remove(req, res);
   });
-
-
-  app.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
-  });
-
 };
 
 function isLoggedIn(req, res, next) {
