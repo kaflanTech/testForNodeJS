@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const Articles = mongoose.model('Articles');
-let i;
-
-Articles.find({}, (err, articles) => {
-  i = articles.reduce((final, current) => Math.max(final, current.id), 0);
-});
-function Response(err, data, res) {
-  if (err) throw err;
-  res.send({ status: "ok", article: data });
-}
 function controller(req, res) {
+  let i;
+
+  Articles.find({}, (err, articles) => {
+    i = articles.reduce((final, current) => Math.max(final, current.id), 0);
+  });
+  function Response(err, data, res) {
+    if (err) throw err;
+    res.send({ status: "ok", article: data });
+  }
 
   function create(req, res) {
     if (typeof i === "undefined") {

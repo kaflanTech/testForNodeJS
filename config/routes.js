@@ -1,5 +1,5 @@
-const controllerFun = require('./controllers/articles.controller');
-const controller = controllerFun();
+const controller = require('./controllers/articles.controller')();
+//const controller = controllerFun();
 module.exports = function (app) {
 
   app.get('/articles', controller.getAllArticles);
@@ -12,4 +12,3 @@ module.exports = function (app) {
 
   app.delete('/articles/:id', controller.remove);
 };
-
